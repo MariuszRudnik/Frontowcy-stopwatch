@@ -1,3 +1,4 @@
 
 echo "Running pre-commit hook"
+npx pretty-quick --staged
 npm test
