@@ -34,21 +34,24 @@ function Stopwatch() {
   }
   function lap() {}
   function formatTime() {
-    let house = Math.floor(elapsedTime / (1000 * 60 * 60));
-    let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
-    let seconds = Math.floor((elapsedTime / 1000) % 60);
-    let milliseconds = Math.floor((elapsedTime % 1000) / 10);
+    const hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+    const minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+    const seconds = Math.floor((elapsedTime / 1000) % 60);
+    const milliseconds = Math.floor((elapsedTime % 1000) / 10);
 
-    house = String(house).padStart(2, "0");
-    minutes = String(minutes).padStart(2, "0");
-    seconds = String(seconds).padStart(2, "0");
-    milliseconds = String(milliseconds).padStart(2, "0");
-    return `${minutes}:${seconds}:${milliseconds}`;
+    const formattedHours = String(hours).padStart(2, "0");
+    const formattedMinutes = String(minutes).padStart(2, "0");
+    const formattedSeconds = String(seconds).padStart(2, "0");
+    const formattedMilliseconds = String(milliseconds).padStart(2, "0");
+
+    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}:${formattedMilliseconds}`;
   }
 
   return (
     <div className="stopwatch">
+      <p>Czas aktualnego okrązenia</p>
       <div className="display">{formatTime()}</div>
+
       <div className="controls">
         <button className="start-button" onClick={start}>
           Start
@@ -62,6 +65,15 @@ function Stopwatch() {
         <button className="lap-button" onClick={lap}>
           Lap
         </button>
+      </div>
+      <p>Czas łaczny : </p>
+      <div className="display-full-time">{formatTime()}</div>
+      <div className="list-contener">
+        <ul className="laps">
+          <li className="laps-list">00:00:00:00</li>
+          <li className="laps-list">00:00:00:00</li>
+          <li className="laps-list">00:00:00:00</li>
+        </ul>
       </div>
     </div>
   );
