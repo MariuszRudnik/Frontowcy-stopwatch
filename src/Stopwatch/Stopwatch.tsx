@@ -4,17 +4,46 @@ import "./Stopwatch.scss";
 function Stopwatch() {
   const [isRunning, setIsRunning] = useState(false);
   const [elapsedTime, setElapsedTime] = useState(0);
-  const initervalRef = useRef(null);
+  const intervalIdRef = useRef<null | number>(null);
   const startTimeRef = useRef(0);
 
-  useEffect(() => {}, [isRunning]);
+  useEffect(() => {
+    if (isRunning) {
+      intervalIdRef.current = setInterval(() => {
+        setElapsedTime(Date.now() - startTimeRef.current);
+      }, 10);
+      return () => {
+        if (intervalIdRef.current) {
+          clearInterval(intervalIdRef.current);
+        }
+      };
+    }
+  }, [isRunning]);
 
-  function start() {}
-  function stop() {}
-  function reset() {}
+  function start() {
+    setIsRunning(true);
+    startTimeRef.current = Date.now() - elapsedTime;
+    console.log(startTimeRef.current);
+  }
+  function stop() {
+    setIsRunning(false);
+  }
+  function reset() {
+    setIsRunning(false);
+    setElapsedTime(0);
+  }
   function lap() {}
   function formatTime() {
-    return "00:00:00";
+    let house = Math.floor(elapsedTime / (1000 * 60 * 60));
+    let minutes = Math.floor((elapsedTime / (1000 * 60)) % 60);
+    let seconds = Math.floor((elapsedTime / 1000) % 60);
+    let milliseconds = Math.floor((elapsedTime % 1000) / 10);
+
+    house = String(house).padStart(2, "0");
+    minutes = String(minutes).padStart(2, "0");
+    seconds = String(seconds).padStart(2, "0");
+    milliseconds = String(milliseconds).padStart(2, "0");
+    return `${minutes}:${seconds}:${milliseconds}`;
   }
 
   return (
