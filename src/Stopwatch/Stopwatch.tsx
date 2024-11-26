@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import "./Stopwatch.scss";
+import Display from "./components/Display.tsx";
+import Laps from "./components/Laps.tsx";
+import Controls from "./components/Controls.tsx";
 
 function Stopwatch() {
   const [isRunning, setIsRunning] = useState(false);
@@ -90,56 +93,24 @@ function Stopwatch() {
     setLapMilliseconds(0);
   }
 
-  function formatTime(
-    hours: number,
-    minutes: number,
-    seconds: number,
-    milliseconds: number,
-  ): string {
-    const formattedHours = String(hours).padStart(2, "0");
-    const formattedMinutes = String(minutes).padStart(2, "0");
-    const formattedSeconds = String(seconds).padStart(2, "0");
-    const formattedMilliseconds = String(milliseconds).padStart(2, "0");
-    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}:${formattedMilliseconds}`;
-  }
-
   return (
     <div className="stopwatch">
-      <p>Czas aktualnego okrążenia</p>
-      <div className="display">
-        {formatTime(lapHours, lapMinutes, lapSeconds, lapMilliseconds)}
-      </div>
-      <p>Czas łączny :</p>
-      <div className="display-full-time">
-        {formatTime(hours, minutes, seconds, milliseconds)}
-      </div>
-      <div className="list-contener">
-        <ul className={laps.length === 0 ? "no_laps" : "laps"}>
-          {laps.length === 0 ? (
-            <li className="laps-list">Nie dodano okrążeń</li>
-          ) : (
-            laps.map((lap, index) => (
-              <li key={index} className="laps-list">
-                Okrążenie {index + 1}: {formatTime(...lap)}
-              </li>
-            ))
-          )}
-        </ul>
-      </div>
-      <div className="controls">
-        <button className="start-button" onClick={start}>
-          Start
-        </button>
-        <button className="stop-button" onClick={stop}>
-          Stop
-        </button>
-        <button className="reset-button" onClick={reset}>
-          Reset
-        </button>
-        <button className="lap-button" onClick={lap}>
-          Lap
-        </button>
-      </div>
+      <Display
+        label="Czas aktualnego okrążenia"
+        hours={lapHours}
+        minutes={lapMinutes}
+        seconds={lapSeconds}
+        milliseconds={lapMilliseconds}
+      />
+      <Display
+        label="Czas łączny"
+        hours={hours}
+        minutes={minutes}
+        seconds={seconds}
+        milliseconds={milliseconds}
+      />
+      <Laps laps={laps} />
+      <Controls start={start} stop={stop} reset={reset} lap={lap} />
     </div>
   );
 }
