@@ -11,7 +11,7 @@ function Stopwatch() {
   const [lapMinutes, setLapMinutes] = useState(0);
   const [lapSeconds, setLapSeconds] = useState(0);
   const [lapMilliseconds, setLapMilliseconds] = useState(0);
-  const [laps, setLaps] = useState([]);
+  const [laps, setLaps] = useState<[number, number, number, number][]>([]);
   const intervalIdRef = useRef<null | number>(null);
   const startTimeRef = useRef(0);
   const lapStartTimeRef = useRef(0);
@@ -76,7 +76,12 @@ function Stopwatch() {
     setLaps([]);
   }
   function lap() {
-    const lapTime = [lapHours, lapMinutes, lapSeconds, lapMilliseconds];
+    const lapTime: [number, number, number, number] = [
+      lapHours,
+      lapMinutes,
+      lapSeconds,
+      lapMilliseconds,
+    ];
     setLaps([...laps, lapTime]);
     lapStartTimeRef.current = Date.now();
     setLapHours(0);
@@ -85,7 +90,12 @@ function Stopwatch() {
     setLapMilliseconds(0);
   }
 
-  function formatTime(hours, minutes, seconds, milliseconds) {
+  function formatTime(
+    hours: number,
+    minutes: number,
+    seconds: number,
+    milliseconds: number,
+  ): string {
     const formattedHours = String(hours).padStart(2, "0");
     const formattedMinutes = String(minutes).padStart(2, "0");
     const formattedSeconds = String(seconds).padStart(2, "0");
@@ -104,7 +114,7 @@ function Stopwatch() {
         {formatTime(hours, minutes, seconds, milliseconds)}
       </div>
       <div className="list-contener">
-        <ul className={`${laps.length === 0 ? "no_laps" : "laps"}`}>
+        <ul className={laps.length === 0 ? "no_laps" : "laps"}>
           {laps.length === 0 ? (
             <li className="laps-list">Nie dodano okrążeń</li>
           ) : (
