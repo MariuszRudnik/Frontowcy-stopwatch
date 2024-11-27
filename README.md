@@ -2,7 +2,7 @@
 
 ## Opis aplikacji
 
-Aplikacja **Stopwatch** jest prostym projektem zaliczeniowym dla bootcampu front-endowców, który umożliwia naukę podstaw React i TypeScript w praktyce. Używa narzędzia Vite do szybkiego budowania i uruchamiania aplikacji.
+Aplikacja **Stopwatch** jest prostym projektem zaliczeniowym dla bootcampu Frontowcy, który umożliwia naukę podstaw React i TypeScript w praktyce. Używa narzędzia Vite do szybkiego budowania i uruchamiania aplikacji.
 
 Aplikacja **Stopwatch** to cyfrowy stoper, napisany w języku TypeScript z użyciem biblioteki React. Stoper pozwala na pomiar czasu, dodawanie okrążeń oraz resetowanie pomiarów. Komponenty zostały podzielone na moduły, co ułatwia modyfikację, utrzymanie i ponowne użycie kodu.
 
@@ -56,12 +56,11 @@ Każda z tych funkcji jest realizowana za pomocą osobnych stanów i funkcji zar
    npm run dev
    ```
 
-Aplikacja uruchomi się w trybie deweloperskim na lokalnym serwerze pod adresem `http://localhost:3000`.
+Aplikacja uruchomi się w trybie deweloperskim na lokalnym serwerze.
 
 ## Wymagania
 
-- **Node.js** w wersji 14.x lub nowszej
-- **npm** w wersji 6.x lub nowszej
+- **Node.js** w wersji 20.x lub nowszej
 
 ## Technologie
 
@@ -73,15 +72,3 @@ Aplikacja uruchomi się w trybie deweloperskim na lokalnym serwerze pod adresem 
 ## Przykłady użycia
 
 Aplikacja może być wykorzystywana do różnego rodzaju aktywności sportowych, w których wymagane jest dokładne śledzenie czasu, takich jak biegi, treningi siłowe czy jazda na rowerze. Funkcja dodawania okrążeń pozwala użytkownikom na rejestrowanie różnych odcinków trasy, co jest szczególnie przydatne podczas biegania na stadionie lub jazdy na rowerze.
-
-## Możliwe rozszerzenia
-
-- Dodanie funkcji **Pauzy**, która pozwala na wstrzymanie działania stopera bez jego zatrzymywania.
-- Eksportowanie danych o okrążeniach do pliku CSV, aby umożliwić późniejszą analizę.
-- Dodanie wykresu, który wizualizuje poszczególne okrążenia i ich czas.
-
-## Autor
-
-Projekt został stworzony w celu nauki React i TypeScript. Jest to dobry przykład modularnej aplikacji, która korzysta z aktualnych najlepszych praktyk, takich jak podział na komponenty, używanie hooków React oraz typowanie za pomocą TypeScript.
-
-Zapraszam do zgłaszania sugestii i pytań poprzez _issues_ w repozytorium GitHub.
