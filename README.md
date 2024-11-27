@@ -1,50 +1,87 @@
-# React + TypeScript + Vite
+# Stopwatch App - README
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Opis aplikacji
 
-Currently, two official plugins are available:
+Aplikacja **Stopwatch** jest prostym projektem zaliczeniowym dla bootcampu front-endowców, który umożliwia naukę podstaw React i TypeScript w praktyce. Używa narzędzia Vite do szybkiego budowania i uruchamiania aplikacji.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Aplikacja **Stopwatch** to cyfrowy stoper, napisany w języku TypeScript z użyciem biblioteki React. Stoper pozwala na pomiar czasu, dodawanie okrążeń oraz resetowanie pomiarów. Komponenty zostały podzielone na moduły, co ułatwia modyfikację, utrzymanie i ponowne użycie kodu.
 
-## Expanding the ESLint configuration
+![Widok aplikacji Stopwatch](screen.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Struktura Aplikacji
 
-- Configure the top-level `parserOptions` property like this:
+Aplikacja jest podzielona na kilka komponentów, które są odpowiedzialne za różne części funkcjonalności stopera:
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. **Stopwatch.tsx** - główny komponent aplikacji, zarządzający stanami i logiką stopera. Obsługuje funkcje takie jak uruchamianie, zatrzymywanie, resetowanie i dodawanie okrążeń.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+2. **Display.tsx** - komponent odpowiedzialny za wyświetlanie aktualnego czasu. Może być używany do wyświetlania zarówno całkowitego czasu, jak i czasu okrążenia.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+3. **Laps.tsx** - komponent odpowiedzialny za wyświetlanie listy zapisanych okrążeń. Każde okrążenie jest zapisywane wraz z czasem jego trwania.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+4. **Controls.tsx** - komponent odpowiedzialny za przyciski sterujące, takie jak _Start_, _Stop_, _Reset_ i _Lap_.
+
+5. **Stopwatch.scss** - plik stylów, w którym definiowane są style aplikacji, zapewniające przyjemny interfejs użytkownika.
+
+## Funkcjonalności
+
+- **Start**: Rozpoczyna pomiar czasu od bieżącej wartości lub wznawia go po zatrzymaniu.
+- **Stop**: Zatrzymuje pomiar czasu, umożliwiając jego późniejsze wznowienie.
+- **Reset**: Resetuje wszystkie wartości czasu i usuwa wszystkie zapisane okrążenia.
+- **Lap**: Dodaje nowe okrążenie i zapisuje czas, odnotowując czas od ostatniego okrążenia.
+
+Każda z tych funkcji jest realizowana za pomocą osobnych stanów i funkcji zarządzanych w głównym komponencie **Stopwatch**.
+
+## Instalacja i uruchomienie
+
+1. Sklonuj repozytorium:
+
+   ```bash
+   git clone https://github.com/MariuszRudnik/Frontowcy-stopwatch
+   ```
+
+2. Przejdź do katalogu projektu:
+
+   ```bash
+   cd stopwatch-app
+   ```
+
+3. Zainstaluj zależności:
+
+   ```bash
+   npm install
+   ```
+
+4. Uruchom aplikację:
+   ```bash
+   npm run dev
+   ```
+
+Aplikacja uruchomi się w trybie deweloperskim na lokalnym serwerze pod adresem `http://localhost:3000`.
+
+## Wymagania
+
+- **Node.js** w wersji 14.x lub nowszej
+- **npm** w wersji 6.x lub nowszej
+
+## Technologie
+
+- **Vite**: Narzędzie do szybkiego budowania i uruchamiania aplikacji
+- **React**: Biblioteka do tworzenia interfejsów użytkownika
+- **TypeScript**: Superset JavaScriptu dodający statyczne typowanie
+- **SCSS**: SASS do tworzenia stylów, który oferuje zagnieżdżone reguły i zmienne dla lepszego zarządzania stylami
+
+## Przykłady użycia
+
+Aplikacja może być wykorzystywana do różnego rodzaju aktywności sportowych, w których wymagane jest dokładne śledzenie czasu, takich jak biegi, treningi siłowe czy jazda na rowerze. Funkcja dodawania okrążeń pozwala użytkownikom na rejestrowanie różnych odcinków trasy, co jest szczególnie przydatne podczas biegania na stadionie lub jazdy na rowerze.
+
+## Możliwe rozszerzenia
+
+- Dodanie funkcji **Pauzy**, która pozwala na wstrzymanie działania stopera bez jego zatrzymywania.
+- Eksportowanie danych o okrążeniach do pliku CSV, aby umożliwić późniejszą analizę.
+- Dodanie wykresu, który wizualizuje poszczególne okrążenia i ich czas.
+
+## Autor
+
+Projekt został stworzony w celu nauki React i TypeScript. Jest to dobry przykład modularnej aplikacji, która korzysta z aktualnych najlepszych praktyk, takich jak podział na komponenty, używanie hooków React oraz typowanie za pomocą TypeScript.
+
+Zapraszam do zgłaszania sugestii i pytań poprzez _issues_ w repozytorium GitHub.
