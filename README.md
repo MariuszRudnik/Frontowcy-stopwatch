@@ -6,6 +6,8 @@ Aplikacja **Stopwatch** jest prostym projektem zaliczeniowym dla bootcampu Front
 
 Aplikacja **Stopwatch** to cyfrowy stoper, napisany w języku TypeScript z użyciem biblioteki React. Stoper pozwala na pomiar czasu, dodawanie okrążeń oraz resetowanie pomiarów. Komponenty zostały podzielone na moduły, co ułatwia modyfikację, utrzymanie i ponowne użycie kodu.
 
+Zobacz działające demo aplikacji: [Demo Stopwatch](https://mariuszrudnik.github.io/Frontowcy-stopwatch/)
+
 ![Widok aplikacji Stopwatch](screen.png)
 
 ## Struktura Aplikacji
